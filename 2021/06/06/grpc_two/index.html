@@ -21,7 +21,7 @@
   <meta name="description" content="demo代码地址 拦截器原理 拦截器函数原型 入参 返回值     新增目录 代码实现 自定义上下文 common&#x2F;context.go   拦截器 middleware&#x2F;context.go middleware&#x2F;recover.go middleware&#x2F;logger.go   将拦截器加载到grpc.Server中   验证    demo代码地址https:&#x2F;&#x2F;github.com&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GO-GRPC实践(二)	增加拦截器,实现自定义context(带request_id)、recover以及请求日志打印">
-<meta property="og:url" content="http://example.com/2021/06/06/grpc_two/index.html">
+<meta property="og:url" content="https://me1onrind.github.io/2021/06/06/grpc_two/index.html">
 <meta property="og:site_name" content="Me1onRind">
 <meta property="og:description" content="demo代码地址 拦截器原理 拦截器函数原型 入参 返回值     新增目录 代码实现 自定义上下文 common&#x2F;context.go   拦截器 middleware&#x2F;context.go middleware&#x2F;recover.go middleware&#x2F;logger.go   将拦截器加载到grpc.Server中   验证    demo代码地址https:&#x2F;&#x2F;github.com&#x2F;">
 <meta property="og:locale" content="zh_CN">
@@ -32,12 +32,10 @@
 <meta property="article:tag" content="grpc">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://example.com/2021/06/06/grpc_two/index.html">
-  
-    <link rel="alternate" href="/atom.xml" title="Me1onRind" type="application/atom+xml">
+  <link rel="canonical" href="https://me1onrind.github.io/2021/06/06/grpc_two/index.html">
   
   
-    <link rel="icon" href="images/tx.jfif" type="image/x-icon">
+    <link rel="icon" href="/images/tx.jfif" type="image/x-icon">
   
   
 <link rel="stylesheet" href="/css/style.css">
@@ -45,8 +43,6 @@
   
   
   
-  
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
   
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -353,7 +349,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://example.com/2021/06/06/grpc_two/" title="GO-GRPC实践(二)	增加拦截器,实现自定义context(带request_id)、recover以及请求日志打印" target="_blank" rel="external">http://example.com/2021/06/06/grpc_two/</a>
+      <a href="https://me1onrind.github.io/2021/06/06/grpc_two/" title="GO-GRPC实践(二)	增加拦截器,实现自定义context(带request_id)、recover以及请求日志打印" target="_blank" rel="external">https://me1onrind.github.io/2021/06/06/grpc_two/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -386,8 +382,6 @@
     
   <section id="comments">
   	
-           
-    
   </section>
 
 
@@ -410,8 +404,6 @@
   
   
   <div class="bar-right">
-    
-    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
     
   </div>
   </div>
@@ -478,25 +470,6 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
    
-    
-  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
-  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
-  <script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: '6cdcdcd99af4b891f3a0',
-    clientSecret: '021b307a6e160dcb57195e842d97511078cf8989',
-    repo: 'Me1onRind.github.io',
-    owner: 'Me1onRind',
-    admin: ['Me1onRind'],
-    id: md5(location.pathname),
-    distractionFreeMode: true
-  })
-  gitalk.render('comments')
-  </script>
-
-      
-
 
 
 
