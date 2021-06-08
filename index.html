@@ -38,6 +38,8 @@
   
   
   
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 
@@ -349,6 +351,43 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
    
 
+
+<!-- custom analytics part create by xiamo -->
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.10.1/dist/av-min.js"></script>
+<script defer>
+AV.init({
+  appId: 'qfzeFAHeqGxJwpyP3Xdf2QT7-MdYXbMMI',
+  appKey: 'PC1itKcKH81ku9FP0TiG38tk'
+});
+
+function addCount(Counter) {
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query('Counter');
+	query.equalTo("url", url);
+	query.find().then(function(results) {
+		if (results.length == 0) {
+			var counter = new Counter()
+			counter.set("title", title);
+			counter.set("url", url);
+			counter.set("time", 1);
+			counter.save().then(function(todo) {
+				console.log("save success")
+			});
+		} else {
+			counter = results[0]
+			counter.increment("time");
+			counter.save()
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	}
+}); 
+</script>
 
 
 
